@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content%}
+
+        <!-- begin:content -->
+    <div id="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="blog-container">
+              <div class="blog-content">
+                <div id="map"></div>
+                <div class="blog-title">
+                  <h2>ما را از خود بی خبر نگذارید
+                  </h2>
+                  <h3>منتظر سوالات و نظرات شما هستیم .
+
+                  </h3>
+                </div>
+
+                <div class="blog-text contact">
+                  <div class="row">
+                    <div class="col-md-8 col-sm-7">
+                      <form action="" method="post">
+                          {% csrf_token %}
+                          {{ form.as_p }}
+
+                        <div class="form-group">
+                          <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> ارسال پیام</button>
+                        </div>
+                      </form><br>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:content -->
+
+
+    <div id="news">
+        <div class="container">
+          <div class="row">
+            <!-- begin:blog -->
+            <div class="col-md-4 col-sm-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="heading-title heading-title-sm bg-white">
+                    <h2>نظرات کاربران</h2>
+                  </div>
+                </div>
+              <div class="row">
+            <div class="col-md-12">
+              <div class="post-container post-noborder">
+                <div class="post-content">
+                  <div class="post-meta">
+                    {% for post in posts %}
+                    <h3>{{ post.body}}</h3>
+
+                    {% endfor %}
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+            </div>
+
+          </div>
+        </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- begin:header -->
+    <div id="header" class="header-slide">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="quick-search">
+              <div class="row">
+                <form role="form" action="{% url 'listing:order'%}" method="">
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                      <label for="country">استان</label>
+                      <select class="form-control">
+                        <option>همه استان ها</option>
+                        <option>تهران</option>
+                        <option>کردستان</option>
+                        <option>گلستان</option>
+                        <option>لرستان</option>
+                        <option>آذربایجان غربی</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="bedroom">اتاق خواب</label>
+                      <select class="form-control" name="bedroom">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- break -->
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                      <label for="location">شهر</label>
+                      <select class="form-control">
+                        <option>همه شهر ها</option>
+                        <option>همه محلات تهران</option>
+                        <option>سنندج</option>
+                        <option>خرم آباد</option>
+                        <option>تبریز</option>
+                        <option>ارومیه</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="bathroom">حمام</label>
+                      <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- break -->
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                      <label for="status">وضعیت</label>
+                      <select class="form-control">
+                        <option>برای فروش</option>
+                        <option>برای خرید</option>
+                        <option>برای اجاره</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="minprice">هزینه حداقل</label>
+                      <select class="form-control">
+                        <option>100,000,000تومان</option>
+                        <option>150,000,000تومان</option>
+                        <option>200,000,000تومان</option>
+                        <option>500,000,000تومان</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- break -->
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                      <label for="type">نوع</label>
+                      <select class="form-control">
+                        <option>ویلا</option>
+                        <option>ساکن</option>
+                        <option>آپارتمان</option>
+                        <option>تجاری</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="maxprice">حداکثر هزینه</label>
+                      <select class="form-control">
+                        <option>9,250,000,000تومان</option>
+                        <option>850,000,000تومان</option>
+                        <option>2,000,000,000تومان</option>
+                        <option>650,000,000تومان</option>
+
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12"><input type="submit" name="submit" value="جستجو" class="btn btn-primary btn-lg btn-block"></div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:header -->
+
+
+
+
+
+
+
+<!-- begin:latest -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="heading-title">
+              <h2>آخرین املاک و مستغلات</h2>
+            </div>
+          </div>
+        </div>
+
+    {% for real in realestates %}
+        <div class="row">
+           <div class="col-md-3 col-sm-6 col-xs-12">
+
+            <div class="property-container" >
+              <div class="property-image">
+                <img src="{{ real.main_image.url }}">
+                <div class="property-price">
+                  <h4>{{ real.type_category.propertytype }}</h4>
+                  <span>{{ real.price}} تومان</span>
+                </div>
+                <div class="property-status">
+                  <span>{{ real.type_category.transaction }}</span>
+                </div>
+              </div>
+              <div class="property-features">
+                <span> | <i class="fa fa-home"></i>| {{real.meterage}}متر </span>
+                <span> |  <i class="fa fa-hdd-o"></i>|{{ real.bedroom }}اتاق </span>
+                <span>| {{ real.year_of_construction }} |</span>
+              </div>
+              <div class="property-content">
+                <h3><a href="{{real.get_absolute_url}}">{{ real.descriptions|truncatewords:5}}</a><small>{{ real.address}}</small></h3>
+
+              </div>
+              <div class="property-details">
+                <a href="{{real.get_absolute_url}}">مشاهده جزئیات</a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- break -->
+        </div>
+
+        <!-- end:latest -->
+    {% endfor %}
+
+    <!-- begin:for-sale -->
+            <div class="row">
+          <div class="col-md-12">
+            <div class="heading-title">
+              <h2>املاک و مستغلات برای فروش</h2>
+            </div>
+          </div>
+        </div>
+    {% for sale in salerealestate %}
+        <div class="row" >
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="property-container box">
+              <div class="property-image">
+                <img src="{{ sale.main_image.url}}" alt="arillo real estate theme">
+                <div class="property-price">
+                  <h4>{{ sale.type_category.propertytype }}</h4>
+                  <span>{{ sale.price}} تومان</span>
+                </div>
+              </div>
+              <div class="property-content">
+                <h3><a href="{{sale.get_absolute_url}}">{{ sale.descriptions|truncatewords:5}}</a><small>{{ sale.address}}</small></h3>
+              </div>
+
+              <div class="property-features">
+                <span><i class="fa fa-home"></i> {{ sale.meterage }} متر</span>
+                <span><i class="fa fa-hdd-o"></i> {{ sale.bedroom }} اتاق</span>
+                <span><i class="fa fa-male"></i> {{ sale.bathroom_and_toilet }} حمام</span>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- end:for-sale -->
+    {% endfor %}
+
+
+            <!-- begin:for-rent -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="heading-title">
+              <h2>املاک و مستغلات برای اجاره</h2>
+            </div>
+          </div>
+        </div>
+    {% for rent in rentrealestate %}
+        <div class="row">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="property-container box">
+              <div class="property-content-list">
+                <div class="property-image-list">
+                  <img src="{{ rent.main_image.url}}" alt="arillo real estate theme">
+                  <div class="property-price">
+                    <h4>{{ rent.type_category.propertytype }}</h4>
+                    <span>{{ rent.price}} تومان<small> / در ماه</small></span>
+                  </div>
+                  <div class="property-features">
+                    <span><i class="fa fa-home"></i>{{ rent.meterage }} متر</span>
+                    <span><i class="fa fa-hdd-o"></i> {{ rent.bedroom }} اتاق</span>
+                    <span><i class="fa fa-male"></i> {{ rent.bathroom_and_toilet }} حمام</span>
+                  </div>
+                </div>
+                <div class="property-text">
+                  <h3><a href="{{rent.get_absolute_url}}">{{ rent.descriptions|truncatewords:10}}</a> <small>{{ rent.address}}</small></h3>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- break -->
+
+
+          <!-- break -->
+        </div>
+        <!-- end:for-rent -->
+    {% endfor %}
+
+
+
+
+
+{% endblock %}

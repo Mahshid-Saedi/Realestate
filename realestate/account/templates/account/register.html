@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- begin:modal-signup -->
+    <div id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+            <h4 class="modal-title">ثبت نام</h4>
+          </div>
+          <div class="modal-body">
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-primary btn-block btn-lg" value="ثبت نام">
+
+
+
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:modal-signup -->
+
+
+{% endblock %}

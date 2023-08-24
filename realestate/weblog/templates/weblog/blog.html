@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <!-- begin:header -->
+    <div id="header" class="heading" style="background-image: url({%  static 'img/img01.jpg'%});">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <div class="page-title">
+              <h2>وبلاگ</h2>
+            </div>
+            <ol class="breadcrumb">
+                            <li class="active">وبلاگ</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:header -->
+
+    <!-- begin:content -->
+    <div id="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="blog-container">
+              <div class="blog-image" style="background-image: url({%  static 'img/img11.jpg'%});">
+
+              </div>
+              {% for blog in blogs %}
+              <div class="blog-content">
+                <div class="blog-title">
+
+                  <h2>{{ blog.title}}</h2>
+                  <h3>{{ blog.question }}</h3>
+                </div>
+
+                <div class="blog-text">
+                  <p>{{ blog.description| truncatewords:15 }}</p>
+                  <p><a href="blog_single.html" class="btn btn-primary">بیشتر <i class="fa fa-arrow-circle-o-left"></i></a></p>
+                </div>
+
+              </div>
+                {% endfor %}
+            </div>
+            <!-- break -->
+
+            <div class="blog-container">
+              <div class="blog-image" style="background-image: url({%  static 'img/img17.jpg'%});">
+
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:content -->
+
+
+
+
+{% endblock %}

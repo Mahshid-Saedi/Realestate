@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="description" content="BavinMelk is responsive html real estate ">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png'%}">
+
+    <title>BavinMelk</title>
+
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,800' rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/font-awesome.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css '%}" rel="stylesheet">
+
+
+</head>
+<body>
+    {% include 'Inc\navbar.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'Inc\messages.html' %}
+    {% include 'Inc\foter.html' %}
+
+
+
+
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{%static 'js/jquery.js' %}"></script>
+    <script src="{%static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="{% static 'js/gmap3.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.js' %}"></script>
+    <script src="{% static 'js/jquery.jcarousel.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.backstretch.js' %}"></script>
+    <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+
+
+
+</body>
+</html>
+
+
